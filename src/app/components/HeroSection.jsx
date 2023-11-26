@@ -46,10 +46,10 @@ const HeroSection = () => {
             Hire Me
           </Link>
           <Link
-            href="https://drive.google.com/file/d/16CpFXO8ZWfk2sjRc5Z9fUAJM6jH_NiuU/view"
+            href="https://drive.google.com/file/d/1deeo6Om4vxDpPUw_t58mPVO5p7JShi5k/view?usp=sharing"
             className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:bg-slate-800 text-white px-6 py-3 rounded-full mr-4"
           >
-            Check My CV
+            Check My Resume!
           </Link>
         </div>
       </motion.div>
