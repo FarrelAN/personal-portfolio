@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "react-scroll";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -22,12 +22,16 @@ const navLinks = [
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [nav, setNav] = useState(false);
+  const handleClick = () => setNav(!nav);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#121212] bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
-          href={"/"}
+          to="home"
+          smooth={true}
+          duration={500}
           className="text-2xl md:text-5xl text-white font-semibold"
         >
           FarrelAN
@@ -52,8 +56,10 @@ const Navbar = () => {
         <div className="menu hidden md:block md:w-auto" id="navbar">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
             {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
+              <li className="text-lg">
+                <Link to="home" smooth={true} duration={500}>
+                  Home
+                </Link>
               </li>
             ))}
           </ul>

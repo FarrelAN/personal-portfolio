@@ -1,11 +1,16 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
 import projectsData from "./data/projectsData";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const ProjectsSection = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -24,7 +29,13 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects">
+    <section
+      name="projects"
+      id="projects"
+      className="lg:py-56 py-32 px-4 sm:mt-12 mt-12 "
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
       <h2 className="text-center text-4xl font-bold text-white mt-8">
         My Projects
       </h2>

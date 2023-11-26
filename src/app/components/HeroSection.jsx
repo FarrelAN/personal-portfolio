@@ -1,23 +1,36 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import "aos/dist/aos.css";
+import AOS from "aos";
 import Link from "next/link";
 
 const HeroSection = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <section className="lg:py-16 flex flex-col-reverse lg:flex-row">
+    <section
+      name="home"
+      className="h-screen flex flex-col-reverse lg:flex-row mb-24 pb-56"
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
       >
-        <h1 className="text-white max-w-2xl mb-4 lg:text-5xl text-4xl font-extrabold">
+        <h1
+          className="text-white max-w-2xl mb-4 lg:text-5xl text-4xl font-extrabold"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <span className="text-transparent text-5xl bg-clip-text bg-gradient-to-r from-[#09C6F9] to-[#045DE9]">
             Hello, I&lsquo;m {""}
           </span>
+
           <TypeAnimation
             sequence={[
               "Farrel A N ",
@@ -34,19 +47,30 @@ const HeroSection = () => {
             repeat={Infinity}
           />
         </h1>
-        <p className="text -[#ADB7BE] mb-6 mx-6 text-lg lg:text-2xl p-5">
+        <p
+          className="text -[#ADB7BE] mb-6 mx-6 text-lg lg:text-2xl p-5"
+          data-aos="fade-right"
+          data-aos-delay="500"
+        >
           Wanna get to know me better? Check out my portfolio and contact me for
           your professional needs!
         </p>
-        <div>
+
+        <div
+          className="flex flex-col lg:flex-row gap-5 w-[80%] mx-auto"
+          data-aos="fade-left"
+          data-aos-delay="300"
+        >
           <Link
             href="/#contact"
-            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:bg-slate-200 text-white px-6 py-3 rounded-full mr-4"
+            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] text-white px-6 py-3 rounded-full mr-4"
           >
             Hire Me
           </Link>
           <Link
             href="https://drive.google.com/file/d/1deeo6Om4vxDpPUw_t58mPVO5p7JShi5k/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:bg-slate-800 text-white px-6 py-3 rounded-full mr-4"
           >
             Check My Resume!
@@ -59,7 +83,11 @@ const HeroSection = () => {
         transition={{ duration: 0.5 }}
         className="col-span-4 place-self-center mt-4 lg:mt-0"
       >
-        <div className="bg-[#181818] lg:w-[350px] lg:h-[350px] w-[250px] h-[250px] rounded-full relative mx-auto overflow-hidden lg:mb-0 mb-8">
+        <div
+          className="bg-[#181818] lg:w-[350px] lg:h-[350px] w-[220px] h-[220px] rounded-full relative mx-auto overflow-hidden lg:mb-0 mb-8"
+          data-aos="fade-left"
+          data-aos-delay="700"
+        >
           <Image
             src="/images/heroprofile.png"
             alt="hero"

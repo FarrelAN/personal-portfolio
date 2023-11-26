@@ -19,7 +19,7 @@ const TabButton = ({ active, selectTab, children }) => {
       <motion.div
         animate={active ? "active" : "default"}
         variants={variants}
-        className="border-b border-[#09C6F9] mr-3"
+        className="border-b border-[#09C6F9] mr-3 "
       ></motion.div>
     </button>
   );
