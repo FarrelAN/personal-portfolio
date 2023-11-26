@@ -18,7 +18,7 @@ const projectsData = [
       "An early prototype Android app designed for students to track their assignments, projects, and deadlines. This Kotlin-based application seamlessly integrates Google Firebase as its realtime database, providing a reliable and secure platform for organizing and managing tasks. ",
     image: "/images/projects/taskmate.png",
     tag: ["All", "Mobile"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/FarrelAN/taskmate",
     previewUrl: "/",
   },
   {
