@@ -14,7 +14,7 @@ const HeroSection = () => {
   return (
     <section
       name="home"
-      className="h-screen flex flex-col-reverse lg:flex-row mb-24 pb-56"
+      className="h-screen flex flex-col-reverse lg:flex-row lg:mb-0 mb-32 lg:pb-56"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}

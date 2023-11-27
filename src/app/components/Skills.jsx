@@ -131,7 +131,6 @@ const Skills = () => {
             key={skill.id}
             className="shadow-md shadow-[#040c16] opacity-20"
             data-aos="fade-right"
-            data-aos-delay="600"
           >
             <img
               className="lg:w-20 w-10 mx-auto pt-3"

@@ -11,13 +11,15 @@ const AboutComponent = () => {
   return (
     <div
       name="about"
-      className="relative bg-cover bg-top rounded-xl border lg:h-[820px] border-[#121212] mt-4 first-letter:py-8 px-4 justify-center items-center lg:bg-[url('/images/aboutbg-2.png')] bg-[url('/images/IMG_3032.JPG')]"
+      className="relative bg-no-repeat bg-cover bg-top rounded-xl border lg:h-[820px] border-[#121212] lg:mt-0 mt-16 first-letter:py-8 px-4 justify-center items-center"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.7)",
         backgroundBlendMode: "darken",
+        backgroundImage: `url('/images/aboutprofile.jpg')`,
+        fallbackBackground: "#333",
       }}
       data-aos="fade-up"
-      data-aos-delay="200"
+      data-aos-delay="100"
     >
       <AboutSection />
     </div>
