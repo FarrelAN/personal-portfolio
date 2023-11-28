@@ -40,7 +40,7 @@ const Sidebar = () => {
         <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#00b190]">
           <a
             className="flex items-center justify-between w-full text-gray-300 ml-6 pr-3"
-            href="https://drive.google.com/file/d/1deeo6Om4vxDpPUw_t58mPVO5p7JShi5k/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1fIf8YDOVz7oD3Zy-3V3I2fU5Nig1CzGQ/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
