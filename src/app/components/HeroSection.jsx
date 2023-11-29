@@ -14,7 +14,7 @@ const HeroSection = () => {
   return (
     <section
       name="home"
-      className="h-screen flex flex-col-reverse lg:flex-row lg:mb-0 mb-32 lg:pb-56"
+      className="h-screen flex flex-col-reverse lg:flex-row lg:mb-0 mb-32 lg:pb-56 justify-center lg:pl-10"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
@@ -57,21 +57,21 @@ const HeroSection = () => {
         </p>
 
         <div
-          className="flex flex-col lg:flex-row gap-5 w-[80%] mx-auto"
+          className="flex flex-col lg:flex-row gap-5 w-[100%] mx-auto items-center lg:ml-5"
           data-aos="fade-left"
           data-aos-delay="300"
         >
           <Link
             href="/#contact"
-            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] text-white px-6 py-3 rounded-full mr-4"
+            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] text-white px-6 py-3 rounded-full "
           >
             Hire Me
           </Link>
           <Link
-            href="https://drive.google.com/file/d/1fIf8YDOVz7oD3Zy-3V3I2fU5Nig1CzGQ/view?usp=sharing"
+            href="http://tiny.cc/FarrelANResume"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:bg-slate-800 text-white px-6 py-3 rounded-full mr-4"
+            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:bg-slate-800 text-white px-6 py-3 rounded-full"
           >
             Check My Resume!
           </Link>
