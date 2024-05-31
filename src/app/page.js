@@ -10,9 +10,8 @@ import Sidebar from "./components/ui/Sidebar";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col max-w-screen">
-      <Navbar />
       <Sidebar />
-      <div className="container mt-24 mx-auto px-12 py-4">
+      <div className="container mx-auto px-12 ">
         <HeroSection />
         <AboutComponent />
         <ProjectsSection />
