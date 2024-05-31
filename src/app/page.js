@@ -1,11 +1,11 @@
 "use client";
-import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
-import AboutComponent from "./components/AboutComponent";
-import ProjectsSection from "./components/ProjectsSection";
-import EmailSection from "./components/EmailSection";
-import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
+import HeroSection from "./components/sections/HeroSection";
+import Navbar from "./components/sections/Navbar";
+import AboutComponent from "./components/ui/AboutComponent";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import EmailSection from "./components/sections/EmailSection";
+import Footer from "./components/ui/Footer";
+import Sidebar from "./components/ui/Sidebar";
 
 export default function Home() {
   return (

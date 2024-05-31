@@ -1,5 +1,5 @@
 "use client";
-import AboutSection from "./AboutSection";
+import AboutSection from "../sections/AboutSection";
 import React, { useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";

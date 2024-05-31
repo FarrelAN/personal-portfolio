@@ -3,9 +3,9 @@ import React, { useTransition, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Skills from "./Skills";
+import Skills from "../ui/Skills";
 import Image from "next/image";
-import TabButton from "./TabButton";
+import TabButton from "../ui/TabButton";
 
 const TAB_DATA = [
   {

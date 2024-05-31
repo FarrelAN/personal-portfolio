@@ -1,9 +1,9 @@
 "use client";
 import { Link } from "react-scroll";
 import React, { useState } from "react";
-import NavLink from "./NavLink";
+import NavLink from "../ui/NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import MenuOverlay from "./MenuOverlay";
+import MenuOverlay from "../ui/MenuOverlay";
 
 const navLinks = [
   {
@@ -17,6 +17,10 @@ const navLinks = [
   {
     title: "Contact",
     path: "#contact",
+  },
+  {
+    title: "ExpenseTrack",
+    path: "/expense-track",
   },
 ];
 

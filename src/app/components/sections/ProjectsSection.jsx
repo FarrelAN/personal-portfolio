@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
+import ProjectCard from "../ui/ProjectCard";
+import ProjectTag from "../ui/ProjectTag";
 import { motion, useInView } from "framer-motion";
-import projectsData from "./data/projectsData";
+import projectsData from "../data/projectsData";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
