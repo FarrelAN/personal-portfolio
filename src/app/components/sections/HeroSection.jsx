@@ -1,3 +1,4 @@
+// components/sections/HeroSection.js
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { motion } from "framer-motion";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Link from "next/link";
+import Profile1 from "@/public/images/index";
 
 const HeroSection = () => {
   useEffect(() => {
@@ -14,7 +16,7 @@ const HeroSection = () => {
   return (
     <section
       name="home"
-      className="h-screen flex flex-col-reverse lg:flex-row lg:mb-0 mb-32 lg:pb-56 justify-center lg:pl-10"
+      className="h-screen flex flex-col-reverse lg:flex-row lg:mb-0 mb-32 lg:pb-56 justify-center lg:pl-10 relative z-10"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
@@ -35,11 +37,11 @@ const HeroSection = () => {
             sequence={[
               "Farrel A N ",
               1000,
-              "a Mobile Developer ",
+              "a Software Developer ",
               1000,
-              "a Web Developer",
+              "an Iot Engineer",
               1000,
-              "a Video Editor",
+              "a Tech Enthusiast",
               1000,
             ]}
             wrapper="span"
@@ -84,7 +86,7 @@ const HeroSection = () => {
         className="col-span-4 place-self-center mt-4 lg:mt-0"
       >
         <div
-          className="bg-[#181818] lg:w-[350px] lg:h-[350px] w-[220px] h-[220px] rounded-full relative mx-auto overflow-hidden lg:mb-0 mb-8"
+          className="lg:w-[500px] lg:h-[500px] w-[220px] h-[220px] rounded-full relative mx-auto overflow-hidden lg:mb-0 mb-8"
           data-aos="fade-left"
           data-aos-delay="700"
         >
@@ -92,8 +94,8 @@ const HeroSection = () => {
             src="/images/heroprofile.png"
             alt="hero"
             className="w-full h-full absolute transform -translate-x-1/6 -translate-y-1/2 top-1/2"
-            width={350}
-            height={350}
+            width={700}
+            height={700}
           />
         </div>
       </motion.div>

@@ -67,7 +67,7 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="h-fit flex flex-col justify-center items-center bg-gray-900 text-white p-6 mt-12">
+    <div className="h-screen flex flex-col items-center  text-white p-6 mt-12">
       <div className="flex flex-col md:flex-row gap-10 w-full max-w-5xl">
         <div className="w-full md:w-1/3">
           <h1 className="text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#09C6F9] to-[#045DE9]">

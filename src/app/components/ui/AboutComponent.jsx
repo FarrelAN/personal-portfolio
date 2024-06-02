@@ -11,7 +11,7 @@ const AboutComponent = () => {
   return (
     <div
       name="about"
-      className="relative bg-no-repeat bg-cover bg-top rounded-xl border lg:h-[820px] border-[#121212] lg:mt-0 mt-16 first-letter:py-8 px-4 justify-center items-center"
+      className="relative bg-no-repeat bg-cover bg-top rounded-xl border lg:h-[820px] border-[#121212] lg:mt-0 mt-16 first-letter:py-8 px-4 justify-center items-center scale-50"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.7)",
         backgroundBlendMode: "darken",

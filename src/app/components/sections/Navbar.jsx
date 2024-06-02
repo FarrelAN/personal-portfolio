@@ -1,9 +1,12 @@
 "use client";
-import { Link } from "react-scroll";
+import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "../ui/NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "../ui/MenuOverlay";
+import { useRouter, navigate } from "next/navigation";
+import Image from "next/image";
+import Logo1 from "@/public/images/logo1.svg";
 
 const navLinks = [
   {
@@ -28,15 +31,23 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
+  const router = useRouter();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#121212] bg-opacity-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-md bg-gradient-to-r  shadow-lg">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
-          href={"/#hero"}
-          className="text-2xl md:text-5xl text-white font-semibold"
+          href={"/"}
+          className="text-2xl md:text-5xl text-white font-semibold "
         >
-          FarrelAN
+          <Image
+            src={Logo1}
+            alt="Logo"
+            width={80}
+            style={{
+              backgroundColor: "bg-white",
+            }}
+          />
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
