@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import Image from "next/image";
 
 const Skills = () => {
   const hintRef = useRef(null);
@@ -8,26 +9,28 @@ const Skills = () => {
   useEffect(() => {
     AOS.init();
 
+    const currentHintRef = hintRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            hintRef.current.classList.add("show-hint");
+            currentHintRef.classList.add("show-hint");
           } else {
-            hintRef.current.classList.remove("show-hint");
+            currentHintRef.classList.remove("show-hint");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    if (hintRef.current) {
-      observer.observe(hintRef.current);
+    if (currentHintRef) {
+      observer.observe(currentHintRef);
     }
 
     return () => {
-      if (hintRef.current) {
-        observer.unobserve(hintRef.current);
+      if (currentHintRef) {
+        observer.unobserve(currentHintRef);
       }
     };
   }, []);
@@ -175,10 +178,12 @@ const Skills = () => {
             className="relative bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-4 shadow-lg transition-transform transform hover:scale-105"
             data-aos="fade-right"
           >
-            <img
+            <Image
               className="w-16 h-16 mx-auto pt-3"
               src={skill.image}
               alt={skill.alt}
+              width={64}
+              height={64}
             />
             <p className="mt-4 text-lg text-white">{skill.label}</p>
             <div className="absolute inset-0 bg-black bg-opacity-75 rounded-lg opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">

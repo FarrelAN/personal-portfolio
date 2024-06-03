@@ -1,8 +1,17 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "./components/sections/Navbar";
-import GradientBackground from "./components/ui/GradientBackground";
-import Sidebar from "@/src/app/components/ui/Sidebar";
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("./components/sections/Navbar"), {
+  ssr: false,
+});
+const GradientBackground = dynamic(
+  () => import("./components/ui/GradientBackground"),
+  { ssr: false }
+);
+const Sidebar = dynamic(() => import("@/src/app/components/ui/Sidebar"), {
+  ssr: false,
+});
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,24 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Skills from "../ui/Skills";
-import TabButton from "../ui/TabButton";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Carousel from "../ui/Carousel";
 import ExperienceSection from "./ExperienceSection";
-
-const TAB_DATA = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: <Skills />,
-  },
-  {
-    title: "Experience",
-    id: "experience",
-    content: <ExperienceSection />,
-  },
-];
 
 const AboutComponent = () => {
   const [tab, setTab] = useState("skills");
@@ -38,17 +23,16 @@ const AboutComponent = () => {
             Who Am I?
           </h2>
           <p className="lg:text-xl text-center mx-10 items-center justify-between">
-            Hey there! 👋 I'm a passionate computer engineering student with a
-            knack for software development. I love crafting full-stack mobile
-            and web applications using Java, Kotlin, Node.js, React.js, Next.js,
-            and React Native. I also enjoy engineering IoT devices 🚀, exploring
-            the latest in technology 💻, diving into business and science 📈🔬,
-            and indulging in cinematography 🎥. I'm all about innovation and
-            teamwork, and I'm excited to bring my skills and enthusiasm to a
-            dynamic team as a software developer. Let's build something amazing
-            together! 🌟
+            Hey there Farrel here!👋 I&apos;m a passionate computer engineering
+            student with a knack for software development. I love crafting
+            full-stack mobile and web applications using Java, Kotlin, Node.js,
+            React.js, Next.js, and React Native. I also enjoy engineering IoT
+            devices 🚀, exploring the latest in technology 💻, diving into
+            business and science 📈🔬, and indulging in cinematography 🎥.
+            I&apos;m all about innovation and teamwork, and I&apos;m excited to
+            bring my skills and enthusiasm to a dynamic team as a software
+            developer. Let&apos;s build something amazing together! 🌟
           </p>
-          ac
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-24">

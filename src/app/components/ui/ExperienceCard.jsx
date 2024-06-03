@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const ExperienceCard = ({ title, company, duration, details, image }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,10 +14,12 @@ const ExperienceCard = ({ title, company, duration, details, image }) => {
       <div className="flex flex-row items-start space-x-4">
         <div className="flex-shrink-0 w-16 h-16 lg:w-24 lg:h-24">
           {image && (
-            <img
+            <Image
               src={image}
               alt={`${company} logo`}
-              className="w-full h-full object-contain rounded-xl"
+              width={96} // You can adjust the width and height as needed
+              height={96}
+              className="object-contain rounded-xl"
             />
           )}
         </div>
@@ -63,7 +66,11 @@ const ExperienceCard = ({ title, company, duration, details, image }) => {
             transition={{ duration: 0.3 }}
             className="mt-4 text-white"
           >
-            <p>{details}</p>
+            <ul className="list-disc pl-5 space-y-2">
+              {details.split("\n").map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>

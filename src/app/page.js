@@ -1,10 +1,25 @@
 // Home.jsx
 "use client";
-import HeroSection from "./components/sections/HeroSection";
-import AboutComponent from "./components/sections/AboutComponent";
-import ProjectsSection from "./components/sections/ProjectsSection";
-import EmailSection from "./components/sections/EmailSection";
-import Footer from "./components/sections/Footer";
+import dynamic from "next/dynamic";
+
+const HeroSection = dynamic(() => import("./components/sections/HeroSection"), {
+  ssr: false,
+});
+const AboutComponent = dynamic(
+  () => import("./components/sections/AboutComponent"),
+  { ssr: false }
+);
+const ProjectsSection = dynamic(
+  () => import("./components/sections/ProjectsSection"),
+  { ssr: false }
+);
+const EmailSection = dynamic(
+  () => import("./components/sections/EmailSection"),
+  { ssr: false }
+);
+const Footer = dynamic(() => import("./components/sections/Footer"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (

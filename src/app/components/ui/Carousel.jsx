@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { About1, About2 } from "@/public/images"; // Import local images
 
 const carouselData = [
@@ -21,13 +22,13 @@ const Carousel = () => {
   const [current, setCurrent] = useState(0);
   const length = carouselData.length;
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrent(current === length - 1 ? 0 : current + 1);
-  };
+  }, [current, length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrent(current === 0 ? length - 1 : current - 1);
-  };
+  }, [current, length]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,10 +50,12 @@ const Carousel = () => {
           {carouselData.map((slide, index) => (
             <div key={slide.id} className="w-full flex-shrink-0">
               <a>
-                <img
+                <Image
                   src={slide.image.src}
                   alt={`Slide ${index}`}
                   className="w-full h-full aspect-square rounded-3xl object-cover object-bottom"
+                  width={500}
+                  height={500}
                 />
               </a>
             </div>
