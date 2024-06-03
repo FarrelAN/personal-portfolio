@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./components/sections/Navbar";
 import GradientBackground from "./components/ui/GradientBackground";
+import Sidebar from "@/src/app/components/ui/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${inter.className} text-white`}>
         <Navbar />
+        <Sidebar />
         <svg>
           <defs>
             <filter id="goo">

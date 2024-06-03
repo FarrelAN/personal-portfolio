@@ -34,20 +34,21 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-md bg-gradient-to-r  shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-md bg-gradient-to-r shadow-lg">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
-          className="text-2xl md:text-5xl text-white font-semibold "
+          className="flex items-center text-2xl md:text-5xl text-white font-semibold"
         >
+          Farrel
           <Image
             src={Logo1}
             alt="Logo"
-            width={80}
-            style={{
-              backgroundColor: "bg-white",
-            }}
+            width={40}
+            height={40}
+            className="mx-2"
           />
+          AN
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

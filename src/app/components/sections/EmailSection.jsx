@@ -4,12 +4,56 @@ import GithubIcon from "../../../../public/github-icon.svg";
 import LinkedinIcon from "../../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import emailjs from "emailjs-com";
+import { useToast } from "@/src/app/components/ui/use-toast";
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const form = e.target;
+
+    emailjs
+      .sendForm(
+        "service_cftunpl",
+        "template_150lc4f",
+        form,
+        "SeC8k-yj0Rhwu0Y8M"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast({
+            title: "Email Sent!",
+            description: "Your email has been sent successfully.",
+            duration: 5000,
+            style: {
+              background: "rgba(0, 255, 0, 0.1)",
+              color: "white",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(0, 255, 0, 0.4)",
+            },
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          toast({
+            title: "Error",
+            description: "Failed to send email. Please try again.",
+            duration: 5000,
+            style: {
+              background: "rgba(255, 0, 0, 0.1)",
+              color: "white",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 0, 0, 0.4)",
+            },
+          });
+        }
+      );
+
+    form.reset();
   };
 
   return (
@@ -23,7 +67,6 @@ const EmailSection = () => {
           Let&apos;s Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
           I&apos;m currently looking for new opportunities, my inbox is always
           open. Whether you have a question or just want to say hi, I&apos;ll
           try my best to get back to you!
@@ -38,66 +81,60 @@ const EmailSection = () => {
         </div>
       </div>
       <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="youremail@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:from-[#0c64ff] hover:to-[#045DE9] text-white font-medium py-2.5 px-5 rounded-lg w-full"
+        <form className="flex flex-col" onSubmit={handleSubmit}>
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="text-white block mb-2 text-sm font-medium"
             >
-              Send Message
-            </button>
-          </form>
-        )}
+              Your email
+            </label>
+            <input
+              name="email"
+              type="email"
+              id="email"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              placeholder="youremail@gmail.com"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="subject"
+              className="text-white block text-sm mb-2 font-medium"
+            >
+              Subject
+            </label>
+            <input
+              name="subject"
+              type="text"
+              id="subject"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              placeholder="Just saying hi"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="message"
+              className="text-white block text-sm mb-2 font-medium"
+            >
+              Message
+            </label>
+            <textarea
+              name="message"
+              id="message"
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              placeholder="Let's talk about..."
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-gradient-to-br from-[#09C6F9] to-[#045DE9] hover:from-[#0c64ff] hover:to-[#045DE9] text-white font-medium py-2.5 px-5 rounded-lg w-full"
+          >
+            Send Message
+          </button>
+        </form>
       </div>
     </section>
   );

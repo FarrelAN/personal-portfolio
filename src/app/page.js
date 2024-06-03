@@ -1,9 +1,10 @@
+// Home.jsx
 "use client";
 import HeroSection from "./components/sections/HeroSection";
-import AboutComponent from "./components/ui/AboutComponent";
+import AboutComponent from "./components/sections/AboutComponent";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import EmailSection from "./components/sections/EmailSection";
-import Footer from "./components/ui/Footer";
+import Footer from "./components/sections/Footer";
 
 export default function Home() {
   return (
