@@ -40,7 +40,6 @@ const Navbar = () => {
           href={"/"}
           className="flex items-center text-2xl md:text-5xl text-white font-semibold"
         >
-          Farrel
           <Image
             src={Logo1}
             alt="Logo"
@@ -48,7 +47,6 @@ const Navbar = () => {
             height={40}
             className="mx-2"
           />
-          AN
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

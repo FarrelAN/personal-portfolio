@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import GithubIcon from "../../../../public/github-icon.svg";
 import LinkedinIcon from "../../../../public/linkedin-icon.svg";
 import Link from "next/link";
@@ -84,15 +84,15 @@ const EmailSection = () => {
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-6">
             <label
-              htmlFor="email"
+              htmlFor="from_email"
               className="text-white block mb-2 text-sm font-medium"
             >
               Your email
             </label>
             <input
-              name="email"
+              name="from_email"
               type="email"
-              id="email"
+              id="from_email"
               required
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="youremail@gmail.com"
