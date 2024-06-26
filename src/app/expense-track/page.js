@@ -3,7 +3,7 @@ import ExpensePage from "../components/sections/ExpensePage"; // Import the clie
 
 const Page = () => {
   return (
-    <div className="container mx-auto px-12 ">
+    <div className="container px-20">
       <ExpensePage />
     </div>
   );

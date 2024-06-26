@@ -1,31 +1,63 @@
 "use client";
-import React, { useState } from "react";
+import * as React from "react";
 import { uploadZipFile } from "../../lib/actions";
 import Link from "next/link";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const formatNumberWithCommas = (number) => {
   return number.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const DatePickerDemo = ({ startDate, setStartDate }) => {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant={"outline"}
+          className={cn(
+            "w-full justify-start text-left font-normal  ",
+            !startDate && "text-muted-foreground"
+          )}
+        >
+          <CalendarIcon className="mr-2 h-4 w-4" />
+          {startDate ? (
+            format(startDate, "dd-MM-yyyy")
+          ) : (
+            <span>Pick a date</span>
+          )}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0 bg-black">
+        <Calendar
+          mode="single"
+          selected={startDate}
+          onSelect={setStartDate}
+          initialFocus
+          className="custom-calendar" // Add this line
+        />
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 const ExpensePage = () => {
-  const [file, setFile] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [maxBudget, setMaxBudget] = useState(""); // Default max budget
-  const [transactions, setTransactions] = useState([]);
-  const [totalValue, setTotalValue] = useState(0);
-  const [totalTransactions, setTotalTransactions] = useState(0);
-  const [error, setError] = useState("");
+  const [file, setFile] = React.useState(null);
+  const [startDate, setStartDate] = React.useState(null);
+  const [maxBudget, setMaxBudget] = React.useState(""); // Default max budget
+  const [transactions, setTransactions] = React.useState([]);
+  const [totalValue, setTotalValue] = React.useState(0);
+  const [totalTransactions, setTotalTransactions] = React.useState(0);
+  const [error, setError] = React.useState("");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-  };
-
-  const handleDateChange = (date) => {
-    setStartDate(date);
   };
 
   const handleMaxBudgetChange = (e) => {
@@ -73,8 +105,9 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center text-white p-6 mt-12 px-auto">
-      <div className="flex-col space-y-9 px-15 ">
+    <div className="w-screen flex flex-col items-center text-white py-6 mt-12 pl-12 pr-32">
+      <div className="flex-col space-y-9 px-15">
+        <h1 className="text-3xl w-3/3 font-semibold">About ExpenseTrack</h1>
         <h1 className="text-xl w-3/3 font-semibold glassmorphic-card2">
           ExpenseTrack is a personal W.I.P project that allows user to
           automatically track their personal expense from a certain txt file
@@ -82,7 +115,7 @@ const ExpensePage = () => {
           that reads transactions history and automatically visualize those
           transactions
         </h1>
-        <div className="flex flex-col md:flex-row space-x-10 w-full max-w-5xl ">
+        <div className="flex flex-col md:flex-row space-x-10 w-full max-w-5xl">
           <div className="w-full md:w-1/3">
             <h1 className="text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
               Upload Transactions
@@ -99,14 +132,11 @@ const ExpensePage = () => {
                   className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:glassmorphic-button text-gray-300 hover:file:bg-gray-500 hover:file:text-white"
                 />
               </label>
-              <label className="flex flex-col ">
+              <label className="flex flex-col">
                 <span className="mb-2">Start Date:</span>
-                <DatePicker
-                  selected={startDate}
-                  onChange={handleDateChange}
-                  dateFormat="dd-MM-yyyy"
-                  className="px-4 py-2 rounded-lg text-white w-full glassmorphic-input" // Ensure full width to fit container
-                  placeholderText="DD-MM-YYYY"
+                <DatePickerDemo
+                  startDate={startDate}
+                  setStartDate={setStartDate}
                 />
               </label>
               <label className="flex flex-col">
@@ -148,12 +178,11 @@ const ExpensePage = () => {
                         text={`IDR${totalValue.toLocaleString("id-ID")}`}
                         styles={buildStyles({
                           textColor: "#ffffff",
-                          pathColor: "#6bb9e0", // Gold color for better contrast with the colorful background
-                          trailColor: "#ffffff33", // Indigo color for better contrast
+                          pathColor: "#6bb9e0",
+                          trailColor: "#ffffff33",
                           textSize: "10px",
                         })}
                       />
-
                       <p className="mt-4 text-center">
                         Total Value: IDR{totalValue.toLocaleString("id-ID")}
                       </p>
