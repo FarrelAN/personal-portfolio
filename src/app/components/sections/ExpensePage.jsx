@@ -7,6 +7,10 @@ import "react-circular-progressbar/dist/styles.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const formatNumberWithCommas = (number) => {
+  return number.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const ExpensePage = () => {
   const [file, setFile] = useState(null);
   const [startDate, setStartDate] = useState(null);
@@ -25,7 +29,9 @@ const ExpensePage = () => {
   };
 
   const handleMaxBudgetChange = (e) => {
-    setMaxBudget(parseInt(e.target.value) || "");
+    const input = e.target.value.replace(/,/g, ""); // Remove existing commas
+    const formattedInput = formatNumberWithCommas(input);
+    setMaxBudget(formattedInput);
   };
 
   const formatDate = (date) => {
@@ -67,40 +73,39 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center  text-white p-6 mt-12">
-      <div className="flex-col space-y-9 px-15">
-        <h1 className="text-lg w-1/2 font-semibold">
-          {" "}
+    <div className="h-screen flex flex-col items-center text-white p-6 mt-12 px-auto">
+      <div className="flex-col space-y-9 px-15 ">
+        <h1 className="text-xl w-3/3 font-semibold glassmorphic-card2">
           ExpenseTrack is a personal W.I.P project that allows user to
           automatically track their personal expense from a certain txt file
           throughout a certain time range. It utilizes a txt compiler script
           that reads transactions history and automatically visualize those
-          transactions{" "}
+          transactions
         </h1>
-        <div className="flex flex-col md:flex-row gap-10 w-full max-w-5xl">
+        <div className="flex flex-col md:flex-row space-x-10 w-full max-w-5xl ">
           <div className="w-full md:w-1/3">
-            <h1 className="text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-white">
+            <h1 className="text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
               Upload Transactions
             </h1>
             <form
               onSubmit={handleFormSubmit}
-              className="flex flex-col gap-4 bg-gray-800 p-6 rounded-lg shadow-lg w-full"
+              className="flex flex-col gap-4 glassmorphic-card2"
             >
               <label className="flex flex-col">
                 <span className="mb-2">Select Zip File:</span>
                 <input
                   type="file"
                   onChange={handleFileChange}
-                  className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r from-[#09C6F9] to-[#045DE9] text-gray-300 hover:file:bg-blue-500"
+                  className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:glassmorphic-button text-gray-300 hover:file:bg-gray-500 hover:file:text-white"
                 />
               </label>
-              <label className="flex flex-col">
+              <label className="flex flex-col ">
                 <span className="mb-2">Start Date:</span>
                 <DatePicker
                   selected={startDate}
                   onChange={handleDateChange}
                   dateFormat="dd-MM-yyyy"
-                  className="px-4 py-2 rounded-lg bg-gray-700 text-white"
+                  className="px-4 py-2 rounded-lg text-white w-full glassmorphic-input" // Ensure full width to fit container
                   placeholderText="DD-MM-YYYY"
                 />
               </label>
@@ -110,13 +115,13 @@ const ExpensePage = () => {
                   type="text"
                   value={maxBudget}
                   onChange={handleMaxBudgetChange}
-                  className="px-4 py-2 rounded-lg bg-gray-700 text-white"
+                  className="px-4 py-2 rounded-lg text-white glassmorphic-input"
                   placeholder="Enter maximum budget"
                 />
               </label>
               <button
                 type="submit"
-                className="py-2 px-4 rounded-full bg-gradient-to-br from-[#09C6F9] to-[#045DE9] text-white font-semibold"
+                className="py-2 px-4 glassmorphic-button text-white font-semibold"
               >
                 Upload
               </button>
@@ -136,33 +141,34 @@ const ExpensePage = () => {
               <>
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-1/2">
-                    <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
+                    <div className="p-6 glassmorphic-card2">
                       <CircularProgressbar
                         value={totalValue}
                         maxValue={maxBudget || 2500000} // Use the maximum budget value here
                         text={`IDR${totalValue.toLocaleString("id-ID")}`}
                         styles={buildStyles({
                           textColor: "#ffffff",
-                          pathColor: "#09C6F9",
-                          trailColor: "#045DE9",
+                          pathColor: "#6bb9e0", // Gold color for better contrast with the colorful background
+                          trailColor: "#ffffff33", // Indigo color for better contrast
                           textSize: "10px",
                         })}
                       />
+
                       <p className="mt-4 text-center">
                         Total Value: IDR{totalValue.toLocaleString("id-ID")}
                       </p>
                     </div>
                   </div>
                   <div className="w-full md:w-1/2">
-                    <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
+                    <div className="p-6 glassmorphic-card2">
                       <CircularProgressbar
                         value={totalTransactions}
                         maxValue={60} // Adjust this value based on your expected total transactions
                         text={`${totalTransactions}`}
                         styles={buildStyles({
                           textColor: "#ffffff",
-                          pathColor: "#09C6F9",
-                          trailColor: "#045DE9",
+                          pathColor: "#6bb9e0",
+                          trailColor: "#ffffff33",
                           textSize: "10px",
                         })}
                       />
@@ -172,26 +178,24 @@ const ExpensePage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-96 overflow-y-auto bg-gray-800 p-4 rounded-lg shadow-lg">
+                <div className="h-96 overflow-y-auto glassmorphic-card custom-scrollbar">
                   {transactions.map((transaction, index) => (
                     <div
                       key={index}
-                      className="mb-4 p-4 bg-gray-700 rounded-lg shadow-lg flex justify-between items-center"
+                      className="mb-4 p-4 glassmorphic-card flex justify-between items-center"
                     >
                       <div>
                         <p className="text-lg font-semibold">
                           {transaction.place}
                         </p>
-                        <p className="text-sm text-gray-400">
-                          {transaction.date}
-                        </p>
+                        <p className="text-sm text-white">{transaction.date}</p>
                         <p className="text-lg font-bold">
                           IDR{transaction.value.toLocaleString("id-ID")}
                         </p>
                       </div>
                       <button
                         onClick={() => handleRemoveTransaction(index)}
-                        className="py-1 px-3 rounded-full bg-red-500 text-white font-semibold"
+                        className="py-1 px-3 bg-gradient-to-r from-red-500 to-red-700 text-white font-semibold rounded-full hover:from-red-600 hover:to-red-800"
                       >
                         Remove
                       </button>
