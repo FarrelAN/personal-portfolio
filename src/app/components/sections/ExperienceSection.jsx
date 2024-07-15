@@ -3,6 +3,15 @@ import ExperienceCard from "../ui/ExperienceCard";
 
 const experiences = [
   {
+    title: "Assistant Project Controller Intern",
+    company: "PT. Huawei Tech Investment",
+    duration: "Feb 2024 - Present",
+    details:
+      "Responsible for assisting the project controller in managing project financials and reports, including daily database update and BoQ reports\nAssisted in the development of a project financial risk assessment model, providing actionable insights to project managers to mitigate financial risks and improve project profitability",
+    image:
+      "https://media.licdn.com/dms/image/C510BAQEtZ01_ey5nIA/company-logo_200_200/0/1630625880354/huawei_logo?e=1729123200&v=beta&t=toXStX0QqhfMVeuveACXnU8pyVfMtwkHn6zZrwQkhrI",
+  },
+  {
     title: "Chief Information Security Office (CISO) Intern",
     company: "PT. Bank Mandiri Persero Tbk.",
     duration: "Feb 2024 - Jun 2024",

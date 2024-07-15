@@ -3,9 +3,11 @@ import ExpensePage from "../components/sections/ExpensePage"; // Import the clie
 
 const Page = () => {
   return (
-    <div className="container px-20">
-      <ExpensePage />
-    </div>
+    <main className="flex min-h-screen max-w-screen overflow-hidden">
+      <div className="container mx-auto ">
+        <ExpensePage />
+      </div>
+    </main>
   );
 };
 

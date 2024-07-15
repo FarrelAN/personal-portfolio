@@ -11,6 +11,20 @@ import { Button } from "../ui/button";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
+const CustomProgressBarText = ({ totalValue, maxBudget }) => {
+  return (
+    <tspan>
+      <tspan x="50%" dy="0">{`IDR${totalValue.toLocaleString("id-ID")}`}</tspan>
+      <tspan x="50%" dy="2.3em" fontSize="0.4em">
+        out of{" "}
+        {`IDR${parseInt(maxBudget.replace(/,/g, "")).toLocaleString("id-ID")}`}
+      </tspan>
+      <tspan x="50%" dy="1.2em" fontSize="0.8em"></tspan>
+    </tspan>
+  );
+};
+
+// Helper function to format number with commas
 const formatNumberWithCommas = (number) => {
   return number.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
@@ -22,7 +36,7 @@ const DatePickerDemo = ({ startDate, setStartDate }) => {
         <Button
           variant={"outline"}
           className={cn(
-            "w-full justify-start text-left font-normal  ",
+            "w-full justify-start text-left font-normal",
             !startDate && "text-muted-foreground"
           )}
         >
@@ -105,24 +119,28 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="w-screen flex flex-col items-center text-white py-6 mt-12 pl-12 pr-32">
-      <div className="flex-col space-y-9 px-15">
-        <h1 className="text-3xl w-3/3 font-semibold">About ExpenseTrack</h1>
-        <h1 className="text-xl w-3/3 font-semibold glassmorphic-card2">
-          ExpenseTrack is a personal W.I.P project that allows user to
-          automatically track their personal expense from a certain txt file
-          throughout a certain time range. It utilizes a txt compiler script
-          that reads transactions history and automatically visualize those
-          transactions
+    <div className="w-full flex flex-col items-center text-white py-6 lg:mt-12 pl-12 md:pl-56">
+      <div className="flex-col space-y-7">
+        <div>
+          <h1 className="ml-2 text-2xl lg:text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
+            About ExpenseTrack
+          </h1>
+          <h1 className="mt-3 lg:text-xl w-10/12 lg:w-10/12 font-semibold glassmorphic-card2">
+            ExpenseTrack is a personal W.I.P project that allows user to input
+            and track their personal expense from a certain txt file throughout
+            a certain time range. It utilizes a .txt compiler script that reads
+            transactions history and intuitively visualize those transactions
+            while also providing basic insights and calculations.
+          </h1>
+        </div>
+        <h1 className="ml-2 text-2xl lg:text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
+          Upload Transactions
         </h1>
-        <div className="flex flex-col md:flex-row space-x-10 w-full max-w-5xl">
-          <div className="w-full md:w-1/3">
-            <h1 className="text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
-              Upload Transactions
-            </h1>
+        <div className="flex flex-col space-y-6 w-screen md:flex-row ">
+          <div className="w-full md:w-fit md:mt-6">
             <form
               onSubmit={handleFormSubmit}
-              className="flex flex-col gap-4 glassmorphic-card2"
+              className="flex flex-col gap-4 glassmorphic-card2 w-10/12  "
             >
               <label className="flex flex-col">
                 <span className="mb-2">Select Zip File:</span>
@@ -166,7 +184,7 @@ const ExpensePage = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-2/3 flex flex-col gap-6">
+          <div className="w-10/12 md:w-2/3 flex flex-col gap-6 md:flex-row ">
             {transactions.length > 0 && (
               <>
                 <div className="flex flex-col md:flex-row gap-6">
@@ -174,8 +192,13 @@ const ExpensePage = () => {
                     <div className="p-6 glassmorphic-card2">
                       <CircularProgressbar
                         value={totalValue}
-                        maxValue={maxBudget || 2500000} // Use the maximum budget value here
-                        text={`IDR${totalValue.toLocaleString("id-ID")}`}
+                        maxValue={parseInt(maxBudget.replace(/,/g, ""))} // Use the maximum budget value here
+                        text={
+                          <CustomProgressBarText
+                            totalValue={totalValue}
+                            maxBudget={maxBudget}
+                          />
+                        }
                         styles={buildStyles({
                           textColor: "#ffffff",
                           pathColor: "#6bb9e0",
@@ -184,7 +207,10 @@ const ExpensePage = () => {
                         })}
                       />
                       <p className="mt-4 text-center">
-                        Total Value: IDR{totalValue.toLocaleString("id-ID")}
+                        Remaining Budget: IDR
+                        {(
+                          parseInt(maxBudget.replace(/,/g, "")) - totalValue
+                        ).toLocaleString("id-ID")}
                       </p>
                     </div>
                   </div>

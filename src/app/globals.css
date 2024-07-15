@@ -36,7 +36,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #009ace;
+  background: linear-gradient(
+    40deg,
+    rgba(var(--color2), 0.8),
+    rgba(var(--color1), 0.8)
+  );
   border-radius: 4px;
 }
 
@@ -50,7 +54,11 @@ body::-webkit-scrollbar-track {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #009ace;
+  background: linear-gradient(
+    40deg,
+    rgba(var(--color2), 0.8),
+    rgba(var(--color1), 0.8)
+  );
   border-radius: 4px;
 }
 
