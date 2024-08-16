@@ -233,11 +233,11 @@ const ExpensePage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-96 overflow-y-auto glassmorphic-card custom-scrollbar">
+                <div className="h-96 overflow-y-auto glassmorphic-card custom-scrollbar bg-black-80">
                   {transactions.map((transaction, index) => (
                     <div
                       key={index}
-                      className="mb-4 p-4 glassmorphic-card flex justify-between items-center"
+                      className="mb-4 p-4 glassmorphic-card2 flex justify-between items-center"
                     >
                       <div>
                         <p className="text-lg font-semibold">
