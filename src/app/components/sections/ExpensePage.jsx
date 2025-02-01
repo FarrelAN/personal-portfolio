@@ -119,13 +119,13 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center text-white py-6 lg:mt-12 pl-12 md:pl-56">
+    <div className="w-full flex flex-col  text-white py-6 lg:mt-12 pl-12 md:pl-56">
       <div className="flex-col space-y-7">
-        <div>
-          <h1 className="ml-2 text-2xl lg:text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white">
+        <div className="w-9/12">
+          <h1 className="mx-auto text-2xl lg:text-4xl font-extrabold mb-6 text-transparent bg-clip-text text-white items-center  justify-center w-fit">
             About ExpenseTrack
           </h1>
-          <h1 className="mt-3 lg:text-xl w-10/12 lg:w-10/12 font-semibold glassmorphic-card2">
+          <h1 className="mt-3 lg:text-xl w-full lg:w-full font-semibold glassmorphic-card2 ">
             ExpenseTrack is a personal W.I.P project that allows user to input
             and track their personal expense from a certain txt file throughout
             a certain time range. It utilizes a .txt compiler script that reads

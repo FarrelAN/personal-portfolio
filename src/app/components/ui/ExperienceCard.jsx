@@ -10,7 +10,7 @@ const ExperienceCard = ({ title, company, duration, details, image }) => {
   };
 
   return (
-    <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-lg p-4 mb-4 transition-all duration-300">
+    <div className="glassmorphic-card2 bg-opacity-10 backdrop-blur-lg rounded-xl shadow-lg p-4 mb-4 transition-all duration-300">
       <div className="flex flex-row items-start space-x-4">
         <div className="flex-shrink-0 w-16 h-16 lg:w-24 lg:h-24">
           {image && (
